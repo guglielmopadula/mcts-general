@@ -8,7 +8,7 @@ import typing
 import abc
 from copy import deepcopy
 
-import gym
+import gymnasium as gym
 
 from mcts_general.common.wrapper import DeepCopyableWrapper, DiscreteActionWrapper
 
@@ -86,8 +86,8 @@ class GymGame(DeepCopyableGame, metaclass=abc.ABCMeta):
         self.render_copy = None
         super(GymGame, self).__init__(seed)
 
-    def reset(self):
-        return self.env.reset()
+    def reset(self,seed=None):
+        return self.env.reset(seed=None)
 
     def close(self):
         self.env.close()
@@ -95,7 +95,7 @@ class GymGame(DeepCopyableGame, metaclass=abc.ABCMeta):
             self.render_copy.close()
 
     def step(self, action, simulation=False):
-        obs, rew, done, _ = self.env.step(action)
+        obs, rew, done, _, _ = self.env.step(action)
         return obs, rew, done
 
     def render(self, mode='human', **kwargs):

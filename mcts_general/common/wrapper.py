@@ -62,5 +62,5 @@ class ManipulatedTimeDiscretization(gym.Wrapper):
 
     def step(self, action):
         for _ in range(self.n_scip):
-            obs, rew, done, inf = self.env.step(action)
+            obs, rew, done, _, inf = self.env.step(action)
         return obs, rew, done, inf
