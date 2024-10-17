@@ -50,7 +50,7 @@ reward = 0
 # run a trajectory
 while not done:
     action = agent.step(game, state, reward, done)
-    state, reward, done = game.step(action)
+    state, reward, done = env.step(action)
     
     # game.render()     # uncomment for environment rendering
 
